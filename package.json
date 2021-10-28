@@ -9,7 +9,7 @@
     "typeorm": "node ./node_modules/typeorm/cli.js",
     "migration:run": "ts-node-dev --transpile-only ./node_modules/typeorm/cli.js migration:run",
     "migration:revert": "ts-node-dev --transpile-only ./node_modules/typeorm/cli.js migration:revert",
-    "build": "babel src --out-dir dist --extensions '.ts'",
+    "build": "NODE_ENV=production tsc",
     "postinstall": "npm run build",
     "test": "cross-env NODE_ENV=test && jest"
   },
