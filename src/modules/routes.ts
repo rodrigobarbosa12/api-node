@@ -1,12 +1,13 @@
 import { Router } from 'express';
-import login from './Controllers/loginController';
+import { validateSignin, validateSignup } from './Controllers/plugin';
+import login from './Controllers/login';
 
 const routes = Router();
 
 /**
  * Autenticação
  */
-routes.post('/signup', login.validateSignup, login.signup);
-routes.post('/signin', login.validateSignin, login.signin);
+routes.post('/signup', validateSignup, login.signup);
+routes.post('/signin', validateSignin, login.signin);
 
 export default routes;

@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
 class usuarios1635427072700 implements MigrationInterface {

@@ -1,16 +1,15 @@
 import { celebrate, Segments, Joi } from 'celebrate';
-import Service from '../Services/login';
 
-const validateSignup = celebrate({
+export const validateSignup = celebrate({
   [Segments.BODY]: Joi.object().keys({
     email: Joi.string().required(),
-    senha: Joi.string().required().min(8).messages({
-      'string.min': 'A senha deve conter no mínimo 8 caracteres',
+    senha: Joi.string().required().min(6).messages({
+      'string.min': 'A senha deve conter no mínimo 6 caracteres',
     }),
   }),
 });
 
-const validateSignin = celebrate({
+export const validateSignin = celebrate({
   [Segments.BODY]: Joi.object().keys({
     email: Joi.string().required().messages({
       'any.required': 'Email ou número de série é obrigatório',
@@ -20,9 +19,3 @@ const validateSignin = celebrate({
     }),
   }),
 });
-
-export default {
-  ...Service,
-  validateSignin,
-  validateSignup,
-};

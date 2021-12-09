@@ -1,30 +1,25 @@
-import { Request, Response } from 'express';
 import mapper from '../Mapper/login';
+import Usuarios from '../../database/entity/Usuarios';
 import views from '../../views/usuarios';
 import { createTokenJwt } from '../../utils';
+import { UsusrioView } from '../../@types/exports';
 
-const signup = async (req: Request, res: Response): Promise<Response> => {
-  try {
-    const { email, senha } = req.body;
+const signup = async (
+  email: string,
+  senha: string
+): Promise<Usuarios> => await mapper.signup(email, senha);
 
-    await mapper.signup(email, senha);
-    return res.send({ message: 'Usuário cadastrado!' });
-  } catch (error) {
-    return res.status(error.code ? error.code : 400).json(error);
-  }
-};
+const signin = async (
+  email: string,
+  senha: string
+): Promise<[UsusrioView, string]> => {
+  const usuario = await mapper.signin(email, senha);
 
-const signin = async (req: Request, res: Response): Promise<Response> => {
-  try {
-    const { email, senha } = req.body;
-    const usuario = views.render(await mapper.signin(email, senha));
+  const usuarioView = views.render(usuario);
 
-    const token = createTokenJwt(usuario);
+  const token = createTokenJwt(usuarioView);
 
-    return res.send({ usuario, token });
-  } catch (error) {
-    return res.status(error.code ? error.code : 400).json(error);
-  }
+  return [usuarioView, token]
 };
 
 export default {

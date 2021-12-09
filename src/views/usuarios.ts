@@ -1,9 +1,5 @@
 import Usuarios from '../database/entity/Usuarios';
-
-interface UsusrioView {
-  id: number;
-  email: string,
-}
+import { UsusrioView } from '../@types/exports';
 
 const render = (usuario: Usuarios): UsusrioView => ({
   id: usuario.id,

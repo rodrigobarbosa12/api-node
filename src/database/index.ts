@@ -11,7 +11,7 @@ createConnection({
   host: 'localhost',
   port: 3306,
   username: 'root',
-  password: 'Rodrigo13',
+  password: '123456',
   database: 'teste',
   entities: [patch],
   namingStrategy: new SnakeNamingStrategy(),

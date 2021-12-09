@@ -1,2 +1,2 @@
 /* eslint-disable import/prefer-default-export */
-export { Models } from './Models';
+export { UsusrioView } from './Usuario';
