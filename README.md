@@ -25,7 +25,7 @@
 
 ## 💻 Projeto
 
-Nova API Força de vendas 💜
+Modelo básico de api
 
 
 ## 🚀 Tecnologias
